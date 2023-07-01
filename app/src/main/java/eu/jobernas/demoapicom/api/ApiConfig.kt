@@ -15,7 +15,7 @@ object ApiConfig {
 
         object Values {
             // TODO: This value here is not secure, dont store in Git or leave it like this in app
-            const val API_KEY = "*****************************************"
+            val API_KEY = AppKeys.getApiKey()
             const val API_HOST = "flight-radar1.p.rapidapi.com"
         }
     }

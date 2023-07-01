@@ -21,6 +21,7 @@ buildscript {
         retrofitVersion = '2.9.0'
         kotlinXCoroutinesVersion = '1.6.4'
         moshiKotlinVersion = '1.14.0'
+        googleTruthVersion = '1.1.3'
 
     }
 }

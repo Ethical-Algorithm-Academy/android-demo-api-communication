@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d(TAG, "Description: ${it.description}")
                 }
             }catch (error: Throwable) {
-                Log.e(TAG, "Error", error)
+                Log.e(TAG, "Error: ${error.message}", error)
             }
         }
     }

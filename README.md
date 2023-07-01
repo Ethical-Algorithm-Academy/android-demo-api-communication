@@ -24,3 +24,7 @@ In the manifest we need to declare that the application will use the Internet, s
     <!-- ... -->
 </manifest>
 ```
+
+## Testing
+
+In order to decompile the build to check for unsecure stuff you can upload your apk to this.

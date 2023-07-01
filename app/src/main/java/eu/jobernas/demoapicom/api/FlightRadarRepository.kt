@@ -3,7 +3,9 @@ package eu.jobernas.demoapicom.api
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import eu.jobernas.demoapicom.api.responses.AircraftListResponse
+import eu.jobernas.demoapicom.api.responses.AirportsResponse
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -22,13 +24,19 @@ class FlightRadarRepository() {
 
     object Endpoints {
         const val AIR_CRAFTS_LIST = "aircrafts/list"
+        const val AIRPORTS_LIST = "airports/list"
     }
 
     // Clients Configuration
     private val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
+        .addInterceptor(CommonHeaderInterceptor())
+        .addInterceptor(HttpLoggingInterceptor().apply {
+            setLevel(HttpLoggingInterceptor.Level.BODY)
+        })
         .connectTimeout(ApiConfig.Connection.CONNECT_TIMEOUT, TimeUnit.SECONDS)
         .readTimeout(ApiConfig.Connection.READ_TIMEOUT, TimeUnit.SECONDS)
         .writeTimeout(ApiConfig.Connection.WRITE_TIMEOUT, TimeUnit.SECONDS)
+
 
     private val moshiBuilder: Moshi.Builder = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
@@ -55,8 +63,10 @@ class FlightRadarRepository() {
     interface FlightRadarRequestsInterface {
 
         @GET(Endpoints.AIR_CRAFTS_LIST)
-        suspend fun getAirCraftsList(@Header(ApiConfig.Headers.API_KEY) apiKey: String = ApiConfig.Headers.Values.API_KEY,
-                             @Header(ApiConfig.Headers.API_HOST) apiHost: String = ApiConfig.Headers.Values.API_HOST): AircraftListResponse
+        suspend fun getAirCraftsList(): AircraftListResponse
+
+        @GET(Endpoints.AIRPORTS_LIST)
+        suspend fun getAirportList(): AirportsResponse
 
     }
 
