@@ -16,6 +16,7 @@ class SecretTests {
 
     @Test
     fun testWithOneSecret() {
+        println("$TAG::testWithOneSecret: $testValue")
         val afterFirstSecret = SecretUtils.encode(secretOne, testValue)
         println("$TAG::afterFirstSecret: $afterFirstSecret")
         val decodedFirstSecret = SecretUtils.decode(secretOne, afterFirstSecret)
@@ -25,6 +26,7 @@ class SecretTests {
 
     @Test
     fun testWithTwoSecret() {
+        println("$TAG::testWithTwoSecret: $testValue")
         val afterFirstSecret = SecretUtils.encode(secretOne, testValue)
         println("$TAG::afterFirstSecret: $afterFirstSecret")
         val afterSecondSecret = SecretUtils.encode(secretTwo, afterFirstSecret)
