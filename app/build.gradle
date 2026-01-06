@@ -55,12 +55,15 @@ android {
 dependencies {
     implementation "androidx.core:core-ktx:$androidCoreVersion"
     implementation "androidx.appcompat:appcompat:$androidAppCompatVersion"
+    implementation "androidx.activity:activity-ktx:1.8.2"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$androidContraintVersion"
 
+    // OK HTTP
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 
+    // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
 
